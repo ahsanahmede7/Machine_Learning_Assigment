@@ -38,6 +38,11 @@ if st.button("Predict"):
 
     if response.status_code == 200:
         prediction = response.json().get("prediction")
-        st.success(f"The predicted income class is: {prediction}")  
+        if prediction =="<=50K":
+            prediction = "Less than or equal to $50K"
+            st.success(f"The predicted income class is: {prediction}")
+        else:
+            prediction = "Greater than $50K"
+            st.success(f"The predicted income class is: {prediction}")  
     else:
         st.error("Error in prediction. Please try again.")
